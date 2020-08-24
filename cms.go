@@ -15,7 +15,7 @@ var cmsList []CMS
 func SysInit(app *EComApp.Application) error {
 	cms := &CMS{
 		App:     app,
-		Message: "Welcome to the API plugin",
+		Message: "Welcome to the CMS plugin",
 	}
 	cms.SysInit(app)
 
