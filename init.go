@@ -4,8 +4,8 @@ import (
 	"context"
 	"log"
 
-	EComApp "github.com/codedv8/go-ecom-app"
-	EComStructs "github.com/codedv8/go-ecom-structs"
+	ecomapp "github.com/codedv8/go-ecom-app"
+	ecomstructs "github.com/codedv8/go-ecom-structs"
 	_ "github.com/gin-gonic/gin"
 	"go.mongodb.org/mongo-driver/bson"
 )
@@ -17,15 +17,15 @@ type Page struct {
 }
 
 // SysInit - Pre initialization of the object
-func (cms *CMS) SysInit(app *EComApp.Application) {
+func (cms *CMS) SysInit(app *ecomapp.Application) {
 
 }
 
 // Init - Initialization of the object
-func (cms *CMS) Init(app *EComApp.Application) {
+func (cms *CMS) Init(app *ecomapp.Application) {
 	app.ListenToHook("ROUTER_WILDCARD", func(payload interface{}) (bool, error) {
 		switch c := payload.(type) {
-		case *EComStructs.RouterWildcard:
+		case *ecomstructs.RouterWildcard:
 			path := c.Context.Request.URL.Path
 			if path == "/" {
 				collection := app.DB.Client.Database("shop").Collection("cms")
