@@ -2,22 +2,26 @@ package main
 
 import (
 	"context"
+	"log"
+
 	EComApp "github.com/codedv8/go-ecom-app"
 	EComStructs "github.com/codedv8/go-ecom-structs"
 	_ "github.com/gin-gonic/gin"
 	"go.mongodb.org/mongo-driver/bson"
-	"log"
 )
 
+// Page - Basic definition af a page
 type Page struct {
 	Title  string `bson:"title"`
 	SEOURL string `bson:"seourl"`
 }
 
+// SysInit - Pre initialization of the object
 func (cms *CMS) SysInit(app *EComApp.Application) {
 
 }
 
+// Init - Initialization of the object
 func (cms *CMS) Init(app *EComApp.Application) {
 	app.ListenToHook("ROUTER_WILDCARD", func(payload interface{}) (bool, error) {
 		switch c := payload.(type) {
